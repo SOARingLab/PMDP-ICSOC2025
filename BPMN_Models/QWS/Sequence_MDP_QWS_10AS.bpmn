@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1ll3ajg" targetNamespace="http://bpmn.io/schema/bpmn" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="17.7.1">
+  <bpmn:process id="Process_12b5he0" isExecutable="false">
+    <bpmn:startEvent id="StartEvent_1s24cu0">
+      <bpmn:outgoing>Flow_0endcjc</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_1dfi3rh">
+        <bpmn:targetRef>DataObjectReference_0pt4qwp</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_16b03kv">
+        <bpmn:targetRef>DataObjectReference_0kvtimb</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_07yugwf">
+        <bpmn:targetRef>DataObjectReference_1jmlmzp</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:startEvent>
+    <bpmn:task id="Activity_13d0tyc" name="A1">
+      <bpmn:incoming>Flow_0endcjc</bpmn:incoming>
+      <bpmn:outgoing>Flow_04a0xw7</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_0endcjc" sourceRef="StartEvent_1s24cu0" targetRef="Activity_13d0tyc" />
+    <bpmn:task id="Activity_1vrx54s" name="A2">
+      <bpmn:incoming>Flow_04a0xw7</bpmn:incoming>
+      <bpmn:outgoing>Flow_1obmkkc</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_04a0xw7" sourceRef="Activity_13d0tyc" targetRef="Activity_1vrx54s" />
+    <bpmn:dataObjectReference id="DataObjectReference_0pt4qwp" name="KPIs" dataObjectRef="DataObject_0bk2zi8" />
+    <bpmn:dataObject id="DataObject_0bk2zi8" />
+    <bpmn:dataObjectReference id="DataObjectReference_0kvtimb" name="HardConstraints" dataObjectRef="DataObject_0s8w7o0" />
+    <bpmn:dataObject id="DataObject_0s8w7o0" />
+    <bpmn:dataObjectReference id="DataObjectReference_1jmlmzp" name="SoftConstraints" dataObjectRef="DataObject_1gs4f7y" />
+    <bpmn:dataObject id="DataObject_1gs4f7y" />
+    <bpmn:task id="Activity_1tvuv52" name="A3">
+      <bpmn:incoming>Flow_1obmkkc</bpmn:incoming>
+      <bpmn:outgoing>Flow_0u0lx8s</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_1obmkkc" sourceRef="Activity_1vrx54s" targetRef="Activity_1tvuv52" />
+    <bpmn:task id="Activity_1iqptth" name="A4">
+      <bpmn:incoming>Flow_0u0lx8s</bpmn:incoming>
+      <bpmn:outgoing>Flow_183wohu</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_0u0lx8s" sourceRef="Activity_1tvuv52" targetRef="Activity_1iqptth" />
+    <bpmn:task id="Activity_1065d6z" name="A5">
+      <bpmn:incoming>Flow_183wohu</bpmn:incoming>
+      <bpmn:outgoing>Flow_1umguvm</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_183wohu" sourceRef="Activity_1iqptth" targetRef="Activity_1065d6z" />
+    <bpmn:task id="Activity_18l0tqz" name="A6">
+      <bpmn:incoming>Flow_1umguvm</bpmn:incoming>
+      <bpmn:outgoing>Flow_0fp99gp</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_1umguvm" sourceRef="Activity_1065d6z" targetRef="Activity_18l0tqz" />
+    <bpmn:task id="Activity_061om38" name="A7">
+      <bpmn:incoming>Flow_0fp99gp</bpmn:incoming>
+      <bpmn:outgoing>Flow_06392uk</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_0fp99gp" sourceRef="Activity_18l0tqz" targetRef="Activity_061om38" />
+    <bpmn:task id="Activity_1cf53xe" name="A8">
+      <bpmn:incoming>Flow_06392uk</bpmn:incoming>
+      <bpmn:outgoing>Flow_0m9pjq5</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_06392uk" sourceRef="Activity_061om38" targetRef="Activity_1cf53xe" />
+    <bpmn:task id="Activity_0n0ieuo" name="A9">
+      <bpmn:incoming>Flow_0m9pjq5</bpmn:incoming>
+      <bpmn:outgoing>Flow_0bpxo2z</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_0m9pjq5" sourceRef="Activity_1cf53xe" targetRef="Activity_0n0ieuo" />
+    <bpmn:task id="Activity_1jim90a" name="A10">
+      <bpmn:incoming>Flow_0bpxo2z</bpmn:incoming>
+      <bpmn:outgoing>Flow_14rpnk1</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_0bpxo2z" sourceRef="Activity_0n0ieuo" targetRef="Activity_1jim90a" />
+    <bpmn:endEvent id="Event_0y7p0ue">
+      <bpmn:incoming>Flow_14rpnk1</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_14rpnk1" sourceRef="Activity_1jim90a" targetRef="Event_0y7p0ue" />
+    <bpmn:textAnnotation id="TextAnnotation_06bezeq">
+      <bpmn:text>C={c1:{[0],[1],[2],[3],[4],[5],[6],[7],[8],[9]}}||U={c1_u1#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c1_u2#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c1_u3#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c1_u4#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c1_u5#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c1_u6#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c1_u7#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c1_u8#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}}</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_13qq3lv" associationDirection="None" sourceRef="Activity_13d0tyc" targetRef="TextAnnotation_06bezeq" />
+    <bpmn:textAnnotation id="TextAnnotation_19rsr5j">
+      <bpmn:text>C={c2:{[0],[1],[2],[3],[4],[5],[6],[7],[8],[9]}}||U={c2_u1#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c2_u2#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c2_u3#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c2_u4#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c2_u5#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c2_u6#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c2_u7#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c2_u8#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}}</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_1g0wjdq" associationDirection="None" sourceRef="Activity_1vrx54s" targetRef="TextAnnotation_19rsr5j" />
+    <bpmn:textAnnotation id="TextAnnotation_07momx7">
+      <bpmn:text>C={c3:{[0],[1],[2],[3],[4],[5],[6],[7],[8],[9]}}||U={c3_u1#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c3_u2#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c3_u3#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c3_u4#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c3_u5#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c3_u6#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c3_u7#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c3_u8#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}}</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_1okcfo9" associationDirection="None" sourceRef="Activity_1tvuv52" targetRef="TextAnnotation_07momx7" />
+    <bpmn:textAnnotation id="TextAnnotation_0km44ae">
+      <bpmn:text>C={c4:{[0],[1],[2],[3],[4],[5],[6],[7],[8],[9]}}||U={c4_u1#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c4_u2#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c4_u3#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c4_u4#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c4_u5#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c4_u6#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c4_u7#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c4_u8#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}}</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_0pspc7a" associationDirection="None" sourceRef="Activity_1iqptth" targetRef="TextAnnotation_0km44ae" />
+    <bpmn:textAnnotation id="TextAnnotation_1jy5pyj">
+      <bpmn:text>C={c5:{[0],[1],[2],[3],[4],[5],[6],[7],[8],[9]}}||U={c5_u1#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c5_u2#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c5_u3#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c5_u4#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c5_u5#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c5_u6#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c5_u7#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c5_u8#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}}</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_0a976ap" associationDirection="None" sourceRef="Activity_1065d6z" targetRef="TextAnnotation_1jy5pyj" />
+    <bpmn:textAnnotation id="TextAnnotation_0tkyr62">
+      <bpmn:text>C={c6:{[0],[1],[2],[3],[4],[5],[6],[7],[8],[9]}}||U={c6_u1#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c6_u2#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c6_u3#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c6_u4#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c6_u5#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c6_u6#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c6_u7#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c6_u8#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}}</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_10tvqz0" associationDirection="None" sourceRef="Activity_18l0tqz" targetRef="TextAnnotation_0tkyr62" />
+    <bpmn:textAnnotation id="TextAnnotation_1tr61d6">
+      <bpmn:text>C={c7:{[0],[1],[2],[3],[4],[5],[6],[7],[8],[9]}}||U={c7_u1#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c7_u2#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c7_u3#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c7_u4#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c7_u5#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c7_u6#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c7_u7#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c7_u8#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}}</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_1pv0zkf" associationDirection="None" sourceRef="Activity_061om38" targetRef="TextAnnotation_1tr61d6" />
+    <bpmn:textAnnotation id="TextAnnotation_0hl6jtl">
+      <bpmn:text>C={c8:{[0],[1],[2],[3],[4],[5],[6],[7],[8],[9]}}||U={c8_u1#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c8_u2#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c8_u3#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c8_u4#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c8_u5#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c8_u6#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c8_u7#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c8_u8#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}}</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_1fmmck4" associationDirection="None" sourceRef="Activity_1cf53xe" targetRef="TextAnnotation_0hl6jtl" />
+    <bpmn:textAnnotation id="TextAnnotation_09zjmmv">
+      <bpmn:text>C={c9:{[0],[1],[2],[3],[4],[5],[6],[7],[8],[9]}}||U={c9_u1#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c9_u2#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c9_u3#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c9_u4#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c9_u5#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c9_u6#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c9_u7#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c9_u8#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}}</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_1qikscy" associationDirection="None" sourceRef="Activity_0n0ieuo" targetRef="TextAnnotation_09zjmmv" />
+    <bpmn:textAnnotation id="TextAnnotation_1cy23ww">
+      <bpmn:text>C={c10:{[0],[1],[2],[3],[4],[5],[6],[7],[8],[9]}}||U={c10_u1#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c10_u2#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c10_u3#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c10_u4#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c10_u5#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c10_u6#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c10_u7#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}|c10_u8#positive:{([0.0],unknown),([0.1],unknown),([0.2],unknown),([0.3],unknown),([0.4],unknown),([0.5],unknown),([0.6],unknown),([0.7],unknown),([0.8],unknown),([0.9],unknown),([1.0],unknown)}}</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_1cazwoh" associationDirection="None" sourceRef="Activity_1jim90a" targetRef="TextAnnotation_1cy23ww" />
+    <bpmn:association id="Association_1k31f7t" associationDirection="None" sourceRef="DataObjectReference_0pt4qwp" targetRef="TextAnnotation_0ae95f9" />
+    <bpmn:association id="Association_0e83i7o" associationDirection="None" sourceRef="DataObjectReference_1jmlmzp" targetRef="TextAnnotation_17pvb8a" />
+    <bpmn:textAnnotation id="TextAnnotation_0ae95f9">
+      <bpmn:text>KPIs::avgTime=(c1_u1+c2_u1+c3_u1+c4_u1+c5_u1+c6_u1+c7_u1+c8_u1+c9_u1+c10_u1)\div 10|mulAvailable=c1_u2\times c2_u2\times c3_u2\times c4_u2\times c5_u2\times c6_u2\times c7_u2\times c8_u2\times c9_u2\times c10_u2|minTPut=\LB[c1_u3,c2_u3,c3_u3,c4_u3,c5_u3,c6_u3,c7_u3,c8_u3,c9_u3,c10_u3]|mulSuccess=c1_u4\times c2_u4\times c3_u4\times c4_u4\times c5_u4\times c6_u4\times c7_u4\times c8_u4\times c9_u4\times c10_u4|mulReliability=c1_u5\times c2_u5\times c3_u5\times c4_u5\times c5_u5\times c6_u5\times c7_u5\times c8_u5\times c9_u5\times c10_u5|avgCom=(c1_u6+c2_u6+c3_u6+c4_u6+c5_u6+c6_u6+c7_u6+c8_u6+c9_u6+c10_u6)\div 10|avgBP=(c1_u7+c2_u7+c3_u7+c4_u7+c5_u7+c6_u7+c7_u7+c8_u7+c9_u7+c10_u7)\div 10|avgLatency=(c1_u8+c2_u8+c3_u8+c4_u8+c5_u8+c6_u8+c7_u8+c8_u8+c9_u8+c10_u8)\div 10|RTkpi=(1-avgTime)|LTkpi=(1-avgLatency)|LTS=minTPut\div (\RB[RTkpi,LTkpi]+0.00001)|StabilityKPI=mulAvailable\times mulSuccess\times mulReliability|ComplianceKPI=(avgCom+avgBP)\div 2|sqrtStabilityKPI=(\sqrt[10]{StabilityKPI})|sqrtComplianceKPI=\sqrt[10]{ComplianceKPI}|tmpKPI=sqrtStabilityKPI\times sqrtComplianceKPI|SBI=\sqrt{tmpKPI}|minCom5=\LB[c1_u6,c3_u6,c5_u6]|avgCom5=(c1_u6+c2_u6+c3_u6+c4_u6+c5_u6)\div 5|noneKPI=c1+c2+c3+c4+c5+c6+c7+c8+c9+c10+LTS</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="TextAnnotation_17pvb8a">
+      <bpmn:text>SC::sc1#0.5:LTS&gt;2.0|sc2#0.0:SBI&gt;0.6|sc3#0.5:\max SBI|sc0#0:noneKPI&gt;0</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:textAnnotation id="TextAnnotation_1nxz0bg">
+      <bpmn:text>HC::hc1#1.0:SBI&gt;0.6</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_1n2ql76" associationDirection="None" sourceRef="DataObjectReference_0kvtimb" targetRef="TextAnnotation_1nxz0bg" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_12b5he0">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1s24cu0">
+        <dc:Bounds x="156" y="182" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_13d0tyc_di" bpmnElement="Activity_13d0tyc">
+        <dc:Bounds x="250" y="160" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1vrx54s_di" bpmnElement="Activity_1vrx54s">
+        <dc:Bounds x="410" y="160" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataObjectReference_0pt4qwp_di" bpmnElement="DataObjectReference_0pt4qwp">
+        <dc:Bounds x="-338" y="455" width="36" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="-332" y="431" width="24" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataObjectReference_0kvtimb_di" bpmnElement="DataObjectReference_0kvtimb">
+        <dc:Bounds x="-188" y="455" width="36" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="-210" y="512" width="80" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataObjectReference_1jmlmzp_di" bpmnElement="DataObjectReference_1jmlmzp">
+        <dc:Bounds x="-78" y="455" width="36" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="-98" y="431" width="76" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1tvuv52_di" bpmnElement="Activity_1tvuv52">
+        <dc:Bounds x="570" y="160" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1iqptth_di" bpmnElement="Activity_1iqptth">
+        <dc:Bounds x="730" y="160" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1065d6z_di" bpmnElement="Activity_1065d6z">
+        <dc:Bounds x="890" y="160" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_18l0tqz_di" bpmnElement="Activity_18l0tqz">
+        <dc:Bounds x="1050" y="160" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_061om38_di" bpmnElement="Activity_061om38">
+        <dc:Bounds x="1210" y="160" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1cf53xe_di" bpmnElement="Activity_1cf53xe">
+        <dc:Bounds x="1370" y="160" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0n0ieuo_di" bpmnElement="Activity_0n0ieuo">
+        <dc:Bounds x="1530" y="160" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1jim90a_di" bpmnElement="Activity_1jim90a">
+        <dc:Bounds x="1690" y="160" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0y7p0ue_di" bpmnElement="Event_0y7p0ue">
+        <dc:Bounds x="1852" y="182" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_1n2ql76_di" bpmnElement="Association_1n2ql76">
+        <di:waypoint x="-175" y="455" />
+        <di:waypoint x="-208" y="281" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_0e83i7o_di" bpmnElement="Association_0e83i7o">
+        <di:waypoint x="-78" y="493" />
+        <di:waypoint x="-208" y="580" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_06bezeq_di" bpmnElement="TextAnnotation_06bezeq">
+        <dc:Bounds x="-1820" y="-1200" width="909.9896240234375" height="155.7604217529297" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_19rsr5j_di" bpmnElement="TextAnnotation_19rsr5j">
+        <dc:Bounds x="-240" y="750" width="439.97918701171875" height="372.0833435058594" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_07momx7_di" bpmnElement="TextAnnotation_07momx7">
+        <dc:Bounds x="-210" y="-2110" width="550" height="257" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_0km44ae_di" bpmnElement="TextAnnotation_0km44ae">
+        <dc:Bounds x="420" y="580" width="450" height="314" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_1jy5pyj_di" bpmnElement="TextAnnotation_1jy5pyj">
+        <dc:Bounds x="260" y="-2440" width="889.979561101549" height="155.7659208261618" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_0tkyr62_di" bpmnElement="TextAnnotation_0tkyr62">
+        <dc:Bounds x="880" y="400" width="419.99708807384735" height="372.467294192725" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_1tr61d6_di" bpmnElement="TextAnnotation_1tr61d6">
+        <dc:Bounds x="1770" y="-3350" width="541.9900047312542" height="256.4102564102564" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_0hl6jtl_di" bpmnElement="TextAnnotation_0hl6jtl">
+        <dc:Bounds x="1070" y="2140" width="760" height="199" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_09zjmmv_di" bpmnElement="TextAnnotation_09zjmmv">
+        <dc:Bounds x="2300" y="-2060" width="539.9910578292948" height="256.8260515239877" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_1cy23ww_di" bpmnElement="TextAnnotation_1cy23ww">
+        <dc:Bounds x="1710" y="354" width="869.9886019447276" height="170.49666419570053" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1fohuui" bpmnElement="TextAnnotation_0ae95f9">
+        <dc:Bounds x="-920" y="-180" width="570" height="242" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_1dfi3rh_di" bpmnElement="DataOutputAssociation_1dfi3rh">
+        <di:waypoint x="157" y="207" />
+        <di:waypoint x="-120" y="320" />
+        <di:waypoint x="-302" y="467" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_16b03kv_di" bpmnElement="DataOutputAssociation_16b03kv">
+        <di:waypoint x="160" y="211" />
+        <di:waypoint x="-152" y="465" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_07yugwf_di" bpmnElement="DataOutputAssociation_07yugwf">
+        <di:waypoint x="162" y="213" />
+        <di:waypoint x="-42" y="462" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0endcjc_di" bpmnElement="Flow_0endcjc">
+        <di:waypoint x="192" y="200" />
+        <di:waypoint x="250" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_04a0xw7_di" bpmnElement="Flow_04a0xw7">
+        <di:waypoint x="350" y="200" />
+        <di:waypoint x="410" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1obmkkc_di" bpmnElement="Flow_1obmkkc">
+        <di:waypoint x="510" y="200" />
+        <di:waypoint x="570" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0u0lx8s_di" bpmnElement="Flow_0u0lx8s">
+        <di:waypoint x="670" y="200" />
+        <di:waypoint x="730" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_183wohu_di" bpmnElement="Flow_183wohu">
+        <di:waypoint x="830" y="200" />
+        <di:waypoint x="890" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1umguvm_di" bpmnElement="Flow_1umguvm">
+        <di:waypoint x="990" y="200" />
+        <di:waypoint x="1050" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0fp99gp_di" bpmnElement="Flow_0fp99gp">
+        <di:waypoint x="1150" y="200" />
+        <di:waypoint x="1210" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_06392uk_di" bpmnElement="Flow_06392uk">
+        <di:waypoint x="1310" y="200" />
+        <di:waypoint x="1370" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0m9pjq5_di" bpmnElement="Flow_0m9pjq5">
+        <di:waypoint x="1470" y="200" />
+        <di:waypoint x="1530" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0bpxo2z_di" bpmnElement="Flow_0bpxo2z">
+        <di:waypoint x="1630" y="200" />
+        <di:waypoint x="1690" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_14rpnk1_di" bpmnElement="Flow_14rpnk1">
+        <di:waypoint x="1790" y="200" />
+        <di:waypoint x="1852" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_13qq3lv_di" bpmnElement="Association_13qq3lv">
+        <di:waypoint x="255" y="161" />
+        <di:waypoint x="-1119" y="-1044" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1g0wjdq_di" bpmnElement="Association_1g0wjdq">
+        <di:waypoint x="410" y="221" />
+        <di:waypoint x="-240" y="752" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1okcfo9_di" bpmnElement="Association_1okcfo9">
+        <di:waypoint x="613" y="160" />
+        <di:waypoint x="309" y="-1853" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_0pspc7a_di" bpmnElement="Association_0pspc7a">
+        <di:waypoint x="775" y="240" />
+        <di:waypoint x="733" y="580" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_0a976ap_di" bpmnElement="Association_0a976ap">
+        <di:waypoint x="933" y="160" />
+        <di:waypoint x="481" y="-2284" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_10tvqz0_di" bpmnElement="Association_10tvqz0">
+        <di:waypoint x="1076" y="240" />
+        <di:waypoint x="978" y="400" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1pv0zkf_di" bpmnElement="Association_1pv0zkf">
+        <di:waypoint x="1267" y="160" />
+        <di:waypoint x="1805" y="-3094" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1fmmck4_di" bpmnElement="Association_1fmmck4">
+        <di:waypoint x="1414" y="240" />
+        <di:waypoint x="1181" y="2140" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1qikscy_di" bpmnElement="Association_1qikscy">
+        <di:waypoint x="1593" y="160" />
+        <di:waypoint x="2264" y="-1932" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1cazwoh_di" bpmnElement="Association_1cazwoh">
+        <di:waypoint x="1787" y="237" />
+        <di:waypoint x="1933" y="354" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1k31f7t_di" bpmnElement="Association_1k31f7t">
+        <di:waypoint x="-330" y="455" />
+        <di:waypoint x="-475" y="62" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_1nxz0bg_di" bpmnElement="TextAnnotation_1nxz0bg">
+        <dc:Bounds x="-310" y="240" width="150" height="41" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_14a3wo0" bpmnElement="TextAnnotation_17pvb8a">
+        <dc:Bounds x="-380" y="580" width="250" height="41" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

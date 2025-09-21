@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_0wsjoz0" targetNamespace="http://bpmn.io/schema/bpmn" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="17.7.1">
+  <bpmn:process id="Process_1tjlsxf" isExecutable="false">
+    <bpmn:startEvent id="StartEvent_1y8s8wo">
+      <bpmn:outgoing>Flow_0jk4e81</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_0ep7te8">
+        <bpmn:targetRef>DataObjectReference_14bp6ey</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_1hqwdxy">
+        <bpmn:targetRef>DataObjectReference_0qis4ag</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_1ks85bi">
+        <bpmn:targetRef>DataObjectReference_0geumcu</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:startEvent>
+    <bpmn:task id="Activity_07huhsm" name="TC">
+      <bpmn:incoming>Flow_0jk4e81</bpmn:incoming>
+      <bpmn:outgoing>Flow_10f8q0i</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_0jk4e81" sourceRef="StartEvent_1y8s8wo" targetRef="Activity_07huhsm" />
+    <bpmn:sequenceFlow id="Flow_10f8q0i" sourceRef="Activity_07huhsm" targetRef="Gateway_0zubpqk" />
+    <bpmn:task id="Activity_0haiyaz" name="TP">
+      <bpmn:incoming>Flow_1wm4nsa</bpmn:incoming>
+      <bpmn:outgoing>Flow_08ng64i</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_1wm4nsa" sourceRef="Gateway_0zubpqk" targetRef="Activity_0haiyaz" />
+    <bpmn:sequenceFlow id="Flow_1kj7tdd" sourceRef="Gateway_0zubpqk" targetRef="Activity_14m3b29" />
+    <bpmn:sequenceFlow id="Flow_08ng64i" sourceRef="Activity_0haiyaz" targetRef="Gateway_1sq961b" />
+    <bpmn:exclusiveGateway id="Gateway_1sq961b" name="SEG1">
+      <bpmn:incoming>Flow_08ng64i</bpmn:incoming>
+      <bpmn:outgoing>Flow_11yk7ub</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1ctawuf</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:parallelGateway id="Gateway_0zubpqk" name="SPG1">
+      <bpmn:incoming>Flow_10f8q0i</bpmn:incoming>
+      <bpmn:outgoing>Flow_1wm4nsa</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1kj7tdd</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:task id="Activity_0xd34ld" name="F">
+      <bpmn:incoming>Flow_11yk7ub</bpmn:incoming>
+      <bpmn:outgoing>Flow_0a5t52k</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_11yk7ub" name="TV=[1,0]" sourceRef="Gateway_1sq961b" targetRef="Activity_0xd34ld" />
+    <bpmn:task id="Activity_17il0g6" name="T">
+      <bpmn:incoming>Flow_1ctawuf</bpmn:incoming>
+      <bpmn:outgoing>Flow_105x94q</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_1ctawuf" name="TV=[0,1]" sourceRef="Gateway_1sq961b" targetRef="Activity_17il0g6" />
+    <bpmn:exclusiveGateway id="Gateway_10gczf1" name="MEG1">
+      <bpmn:incoming>Flow_105x94q</bpmn:incoming>
+      <bpmn:incoming>Flow_0a5t52k</bpmn:incoming>
+      <bpmn:outgoing>Flow_0oziuos</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_105x94q" sourceRef="Activity_17il0g6" targetRef="Gateway_10gczf1" />
+    <bpmn:sequenceFlow id="Flow_0a5t52k" sourceRef="Activity_0xd34ld" targetRef="Gateway_10gczf1" />
+    <bpmn:task id="Activity_0gzjx4y" name="H">
+      <bpmn:incoming>Flow_1hfuhej</bpmn:incoming>
+      <bpmn:outgoing>Flow_149bjnu</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_149bjnu" sourceRef="Activity_0gzjx4y" targetRef="Gateway_0b85drz" />
+    <bpmn:parallelGateway id="Gateway_0b85drz" name="MPG1">
+      <bpmn:incoming>Flow_149bjnu</bpmn:incoming>
+      <bpmn:incoming>Flow_0oziuos</bpmn:incoming>
+      <bpmn:outgoing>Flow_0d29mql</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:sequenceFlow id="Flow_0oziuos" sourceRef="Gateway_10gczf1" targetRef="Gateway_0b85drz" />
+    <bpmn:task id="Activity_0nslsrt" name="P">
+      <bpmn:incoming>Flow_0d29mql</bpmn:incoming>
+      <bpmn:outgoing>Flow_0k2a3le</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_0d29mql" sourceRef="Gateway_0b85drz" targetRef="Activity_0nslsrt" />
+    <bpmn:endEvent id="Event_0ugkesj">
+      <bpmn:incoming>Flow_0k2a3le</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0k2a3le" sourceRef="Activity_0nslsrt" targetRef="Event_0ugkesj" />
+    <bpmn:dataObjectReference id="DataObjectReference_0qis4ag" name="HardConstraints" dataObjectRef="DataObject_1j2mow7" />
+    <bpmn:dataObject id="DataObject_1j2mow7" />
+    <bpmn:dataObjectReference id="DataObjectReference_0geumcu" name="SoftConstraints" dataObjectRef="DataObject_0fj0v5a" />
+    <bpmn:dataObject id="DataObject_0fj0v5a" />
+    <bpmn:dataObjectReference id="DataObjectReference_14bp6ey" name="KPIs" dataObjectRef="DataObject_0zl3cev" />
+    <bpmn:dataObject id="DataObject_0zl3cev" />
+    <bpmn:task id="Activity_14m3b29" name="HP">
+      <bpmn:incoming>Flow_1kj7tdd</bpmn:incoming>
+      <bpmn:outgoing>Flow_1hfuhej</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_1hfuhej" sourceRef="Activity_14m3b29" targetRef="Activity_0gzjx4y" />
+    <bpmn:textAnnotation id="TextAnnotation_07gqhxk">
+      <bpmn:text>C={D:{[0],[1],[2],[3],[4],[5],[6],[7],[8],[9],[10],[11],[12],[13],[14],[15]}|CI:{[0],[1],[2],[3],[4],[5],[6],[7],[8],[9],[10],[11],[12],[13],[14],[15]}}||U={UB#positive:{([2000],0.2),([4000],0.35),([6000],0.3),([8000],0.1),([10000],0.05)}}</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_0bijgfp" associationDirection="None" sourceRef="Activity_07huhsm" targetRef="TextAnnotation_07gqhxk" />
+    <bpmn:textAnnotation id="TextAnnotation_0880qsa">
+      <bpmn:text>C={R:{[0],[1],[2],[3],[4],[5],[6],[7],[8],[9],[10],[11],[12],[13],[14],[15]}|TV:{[1,0],[0,1]}}||U={}</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_1g42sl7" associationDirection="None" sourceRef="Activity_0haiyaz" targetRef="TextAnnotation_0880qsa" />
+    <bpmn:textAnnotation id="TextAnnotation_0xp5xkp">
+      <bpmn:text>C={EP:{[1],[1.05],[1.1]}}||U={SF:{([500],0.5),([300],0.2),([800],0.3)}|PV:{([0.6,0.4],0.4),([0.7,0.3],0.3),([0.5,0.5],0.3)}}</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_1rzluut" associationDirection="None" sourceRef="Activity_0nslsrt" targetRef="TextAnnotation_0xp5xkp" />
+    <bpmn:textAnnotation id="TextAnnotation_1wtkare">
+      <bpmn:text>C={F:{[0],[1],[2],[3],[4],[5],[6],[7],[8],[9],[10],[11],[12],[13],[14],[15],[16],[17],[18],[19]}||U={FP#negative:{([99999],unknown),([0],unknown),([10],unknown),([20],unknown),([30],unknown),([40],unknown),([50],unknown),([60],unknown),([70],unknown),([80],unknown),([90],unknown),([100],unknown),([110],unknown),([120],unknown),([130],unknown),([140],unknown),([150],unknown),([160],unknown),([170],unknown),([180],unknown),([190],unknown),([200],unknown),([210],unknown),([220],unknown),([230],unknown),([240],unknown),([250],unknown),([260],unknown),([270],unknown),([280],unknown),([290],unknown),([300],unknown),([310],unknown),([320],unknown),([330],unknown),([340],unknown),([350],unknown),([360],unknown),([370],unknown),([380],unknown),([390],unknown),([400],unknown),([410],unknown),([420],unknown),([430],unknown),([440],unknown),([450],unknown),([460],unknown),([470],unknown),([480],unknown),([490],unknown),([500],unknown),([510],unknown),([520],unknown),([530],unknown),([540],unknown),([550],unknown),([560],unknown),([570],unknown),([580],unknown),([590],unknown),([600],unknown),([610],unknown),([620],unknown),([630],unknown),([640],unknown),([650],unknown),([660],unknown),([670],unknown),([680],unknown),([690],unknown),([700],unknown),([710],unknown),([720],unknown),([730],unknown),([740],unknown),([750],unknown),([760],unknown),([770],unknown),([780],unknown),([790],unknown),([800],unknown),([810],unknown),([820],unknown),([830],unknown),([840],unknown),([850],unknown),([860],unknown),([870],unknown),([880],unknown),([890],unknown),([900],unknown),([910],unknown),([920],unknown),([930],unknown),([940],unknown),([950],unknown),([960],unknown),([970],unknown),([980],unknown),([990],unknown),([1000],unknown),([1010],unknown),([1020],unknown),([1030],unknown),([1040],unknown),([1050],unknown),([1060],unknown),([1070],unknown),([1080],unknown),([1090],unknown),([1100],unknown),([1110],unknown),([1120],unknown),([1130],unknown),([1140],unknown),([1150],unknown),([1160],unknown),([1170],unknown),([1180],unknown),([1190],unknown),([1200],unknown),([1210],unknown),([1220],unknown),([1230],unknown),([1240],unknown),([1250],unknown),([1260],unknown),([1270],unknown),([1280],unknown),([1290],unknown),([1300],unknown),([1310],unknown),([1320],unknown),([1330],unknown),([1340],unknown),([1350],unknown),([1360],unknown),([1370],unknown),([1380],unknown),([1390],unknown),([1400],unknown),([1410],unknown),([1420],unknown),([1430],unknown),([1440],unknown),([1450],unknown),([1460],unknown),([1470],unknown),([1480],unknown),([1490],unknown),([1500],unknown),([1510],unknown),([1520],unknown),([1530],unknown),([1540],unknown),([1550],unknown),([1560],unknown),([1570],unknown),([1580],unknown),([1590],unknown),([1600],unknown),([1610],unknown),([1620],unknown),([1630],unknown),([1640],unknown),([1650],unknown),([1660],unknown),([1670],unknown),([1680],unknown),([1690],unknown),([1700],unknown),([1710],unknown),([1720],unknown),([1730],unknown),([1740],unknown),([1750],unknown),([1760],unknown),([1770],unknown),([1780],unknown),([1790],unknown),([1800],unknown),([1810],unknown),([1820],unknown),([1830],unknown),([1840],unknown),([1850],unknown),([1860],unknown),([1870],unknown),([1880],unknown),([1890],unknown),([1900],unknown),([1910],unknown),([1920],unknown),([1930],unknown),([1940],unknown),([1950],unknown),([1960],unknown),([1970],unknown),([1980],unknown),([1990],unknown),([2000],unknown)}|FT#negative:{([99999],unknown),([0],unknown),([10],unknown),([20],unknown),([30],unknown),([40],unknown),([50],unknown),([60],unknown),([70],unknown),([80],unknown),([90],unknown),([100],unknown),([110],unknown),([120],unknown),([130],unknown),([140],unknown),([150],unknown),([160],unknown),([170],unknown),([180],unknown),([190],unknown),([200],unknown),([210],unknown),([220],unknown),([230],unknown),([240],unknown)}}</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_0sr7jrx" associationDirection="None" sourceRef="Activity_0xd34ld" targetRef="TextAnnotation_1wtkare" />
+    <bpmn:textAnnotation id="TextAnnotation_0yk2u12">
+      <bpmn:text>C={T:{[0],[1],[2],[3],[4],[5],[6],[7],[8],[9],[10],[11],[12],[13],[14],[15],[16],[17],[18],[19],[20],[21],[22],[23],[24],[25],[26],[27],[28],[29],[30],[31],[32],[33],[34],[35],[36],[37],[38],[39]}||U={TP#negative:{([99999],unknown),([0],unknown),([10],unknown),([20],unknown),([30],unknown),([40],unknown),([50],unknown),([60],unknown),([70],unknown),([80],unknown),([90],unknown),([100],unknown),([110],unknown),([120],unknown),([130],unknown),([140],unknown),([150],unknown),([160],unknown),([170],unknown),([180],unknown),([190],unknown),([200],unknown),([210],unknown),([220],unknown),([230],unknown),([240],unknown),([250],unknown),([260],unknown),([270],unknown),([280],unknown),([290],unknown),([300],unknown),([310],unknown),([320],unknown),([330],unknown),([340],unknown),([350],unknown),([360],unknown),([370],unknown),([380],unknown),([390],unknown),([400],unknown),([410],unknown),([420],unknown),([430],unknown),([440],unknown),([450],unknown),([460],unknown),([470],unknown),([480],unknown),([490],unknown),([500],unknown),([510],unknown),([520],unknown),([530],unknown),([540],unknown),([550],unknown),([560],unknown),([570],unknown),([580],unknown),([590],unknown),([600],unknown),([610],unknown),([620],unknown),([630],unknown),([640],unknown),([650],unknown),([660],unknown),([670],unknown),([680],unknown),([690],unknown),([700],unknown),([710],unknown),([720],unknown),([730],unknown),([740],unknown),([750],unknown),([760],unknown),([770],unknown),([780],unknown),([790],unknown),([800],unknown),([810],unknown),([820],unknown),([830],unknown),([840],unknown),([850],unknown),([860],unknown),([870],unknown),([880],unknown),([890],unknown),([900],unknown),([910],unknown),([920],unknown),([930],unknown),([940],unknown),([950],unknown),([960],unknown),([970],unknown),([980],unknown),([990],unknown),([1000],unknown),([1010],unknown),([1020],unknown),([1030],unknown),([1040],unknown),([1050],unknown),([1060],unknown),([1070],unknown),([1080],unknown),([1090],unknown),([1100],unknown),([1110],unknown),([1120],unknown),([1130],unknown),([1140],unknown),([1150],unknown),([1160],unknown),([1170],unknown),([1180],unknown),([1190],unknown),([1200],unknown),([1210],unknown),([1220],unknown),([1230],unknown),([1240],unknown),([1250],unknown),([1260],unknown),([1270],unknown),([1280],unknown),([1290],unknown),([1300],unknown),([1310],unknown),([1320],unknown),([1330],unknown),([1340],unknown),([1350],unknown),([1360],unknown),([1370],unknown),([1380],unknown),([1390],unknown),([1400],unknown),([1410],unknown),([1420],unknown),([1430],unknown),([1440],unknown),([1450],unknown),([1460],unknown),([1470],unknown),([1480],unknown),([1490],unknown),([1500],unknown)}|RT#negative:{([99999],unknown),([0],unknown),([10],unknown),([20],unknown),([30],unknown),([40],unknown),([50],unknown),([60],unknown),([70],unknown),([80],unknown),([90],unknown),([100],unknown),([110],unknown),([120],unknown),([130],unknown),([140],unknown),([150],unknown),([160],unknown),([170],unknown),([180],unknown),([190],unknown),([200],unknown),([210],unknown),([220],unknown),([230],unknown),([240],unknown),([250],unknown),([260],unknown),([270],unknown),([280],unknown),([290],unknown),([300],unknown),([310],unknown),([320],unknown),([330],unknown),([340],unknown),([350],unknown),([360],unknown),([370],unknown),([380],unknown),([390],unknown),([400],unknown),([410],unknown),([420],unknown),([430],unknown),([440],unknown),([450],unknown),([460],unknown),([470],unknown),([480],unknown),([490],unknown),([500],unknown),([510],unknown),([520],unknown),([530],unknown),([540],unknown),([550],unknown),([560],unknown),([570],unknown),([580],unknown),([590],unknown),([600],unknown)}|}</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_0v69khr" associationDirection="None" sourceRef="Activity_17il0g6" targetRef="TextAnnotation_0yk2u12" />
+    <bpmn:textAnnotation id="TextAnnotation_1mnr42g">
+      <bpmn:text>C={H:{[0],[1],[2],[3],[4],[5],[6],[7],[8],[9],[10],[11],[12],[13],[14],[15],[16],[17],[18],[19],[20],[21],[22],[23],[24],[25],[26],[27],[28],[29],[30],[31],[32],[33],[34],[35],[36],[37],[38],[39],[40],[41],[42],[43],[44],[45],[46],[47],[48],[49],[50],[51],[52],[53],[54],[55],[56],[57],[58],[59]}}||U={HC:{([0],unknown),([3],unknown),([4],unknown),([5],unknown)}|HP#negative:{([99999],unknown),([0],unknown),([10],unknown),([20],unknown),([30],unknown),([40],unknown),([50],unknown),([60],unknown),([70],unknown),([80],unknown),([90],unknown),([100],unknown),([110],unknown),([120],unknown),([130],unknown),([140],unknown),([150],unknown),([160],unknown),([170],unknown),([180],unknown),([190],unknown),([200],unknown),([210],unknown),([220],unknown),([230],unknown),([240],unknown),([250],unknown),([260],unknown),([270],unknown),([280],unknown),([290],unknown),([300],unknown),([310],unknown),([320],unknown),([330],unknown),([340],unknown),([350],unknown),([360],unknown),([370],unknown),([380],unknown),([390],unknown),([400],unknown),([410],unknown),([420],unknown),([430],unknown),([440],unknown),([450],unknown),([460],unknown),([470],unknown),([480],unknown),([490],unknown),([500],unknown),([510],unknown),([520],unknown),([530],unknown),([540],unknown),([550],unknown),([560],unknown),([570],unknown),([580],unknown),([590],unknown),([600],unknown),([610],unknown),([620],unknown),([630],unknown),([640],unknown),([650],unknown),([660],unknown),([670],unknown),([680],unknown),([690],unknown),([700],unknown),([710],unknown),([720],unknown),([730],unknown),([740],unknown),([750],unknown),([760],unknown),([770],unknown),([780],unknown),([790],unknown),([800],unknown),([810],unknown),([820],unknown),([830],unknown),([840],unknown),([850],unknown),([860],unknown),([870],unknown),([880],unknown),([890],unknown),([900],unknown),([910],unknown),([920],unknown),([930],unknown),([940],unknown),([950],unknown),([960],unknown),([970],unknown),([980],unknown),([990],unknown),([1000],unknown),([1010],unknown),([1020],unknown),([1030],unknown),([1040],unknown),([1050],unknown),([1060],unknown),([1070],unknown),([1080],unknown),([1090],unknown),([1100],unknown),([1110],unknown),([1120],unknown),([1130],unknown),([1140],unknown),([1150],unknown),([1160],unknown),([1170],unknown),([1180],unknown),([1190],unknown),([1200],unknown),([1210],unknown),([1220],unknown),([1230],unknown),([1240],unknown),([1250],unknown),([1260],unknown),([1270],unknown),([1280],unknown),([1290],unknown),([1300],unknown),([1310],unknown),([1320],unknown),([1330],unknown),([1340],unknown),([1350],unknown),([1360],unknown),([1370],unknown),([1380],unknown),([1390],unknown),([1400],unknown),([1410],unknown),([1420],unknown),([1430],unknown),([1440],unknown),([1450],unknown),([1460],unknown),([1470],unknown),([1480],unknown),([1490],unknown),([1500],unknown),([1510],unknown),([1520],unknown),([1530],unknown),([1540],unknown),([1550],unknown),([1560],unknown),([1570],unknown),([1580],unknown),([1590],unknown),([1600],unknown),([1610],unknown),([1620],unknown),([1630],unknown),([1640],unknown),([1650],unknown),([1660],unknown),([1670],unknown),([1680],unknown),([1690],unknown),([1700],unknown),([1710],unknown),([1720],unknown),([1730],unknown),([1740],unknown),([1750],unknown),([1760],unknown),([1770],unknown),([1780],unknown),([1790],unknown),([1800],unknown),([1810],unknown),([1820],unknown),([1830],unknown),([1840],unknown),([1850],unknown),([1860],unknown),([1870],unknown),([1880],unknown),([1890],unknown),([1900],unknown),([1910],unknown),([1920],unknown),([1930],unknown),([1940],unknown),([1950],unknown),([1960],unknown),([1970],unknown),([1980],unknown),([1990],unknown),([2000],unknown),([2010],unknown),([2020],unknown),([2030],unknown),([2040],unknown),([2050],unknown),([2060],unknown),([2070],unknown),([2080],unknown),([2090],unknown),([2100],unknown),([2110],unknown),([2120],unknown),([2130],unknown),([2140],unknown),([2150],unknown),([2160],unknown),([2170],unknown),([2180],unknown),([2190],unknown),([2200],unknown),([2210],unknown),([2220],unknown),([2230],unknown),([2240],unknown),([2250],unknown),([2260],unknown),([2270],unknown),([2280],unknown),([2290],unknown),([2300],unknown),([2310],unknown),([2320],unknown),([2330],unknown),([2340],unknown),([2350],unknown),([2360],unknown),([2370],unknown),([2380],unknown),([2390],unknown),([2400],unknown),([2410],unknown),([2420],unknown),([2430],unknown),([2440],unknown),([2450],unknown),([2460],unknown),([2470],unknown),([2480],unknown),([2490],unknown),([2500],unknown),([2510],unknown),([2520],unknown),([2530],unknown),([2540],unknown),([2550],unknown),([2560],unknown),([2570],unknown),([2580],unknown),([2590],unknown),([2600],unknown),([2610],unknown),([2620],unknown),([2630],unknown),([2640],unknown),([2650],unknown),([2660],unknown),([2670],unknown),([2680],unknown),([2690],unknown),([2700],unknown),([2710],unknown),([2720],unknown),([2730],unknown),([2740],unknown),([2750],unknown),([2760],unknown),([2770],unknown),([2780],unknown),([2790],unknown),([2800],unknown),([2810],unknown),([2820],unknown),([2830],unknown),([2840],unknown),([2850],unknown),([2860],unknown),([2870],unknown),([2880],unknown),([2890],unknown),([2900],unknown),([2910],unknown),([2920],unknown),([2930],unknown),([2940],unknown),([2950],unknown),([2960],unknown),([2970],unknown),([2980],unknown),([2990],unknown),([3000],unknown),([3010],unknown),([3020],unknown),([3030],unknown),([3040],unknown),([3050],unknown),([3060],unknown),([3070],unknown),([3080],unknown),([3090],unknown),([3100],unknown),([3110],unknown),([3120],unknown),([3130],unknown),([3140],unknown),([3150],unknown),([3160],unknown),([3170],unknown),([3180],unknown),([3190],unknown),([3200],unknown),([3210],unknown),([3220],unknown),([3230],unknown),([3240],unknown),([3250],unknown),([3260],unknown),([3270],unknown),([3280],unknown),([3290],unknown),([3300],unknown),([3310],unknown),([3320],unknown),([3330],unknown),([3340],unknown),([3350],unknown),([3360],unknown),([3370],unknown),([3380],unknown),([3390],unknown),([3400],unknown),([3410],unknown),([3420],unknown),([3430],unknown),([3440],unknown),([3450],unknown),([3460],unknown),([3470],unknown),([3480],unknown),([3490],unknown),([3500],unknown),([3510],unknown),([3520],unknown),([3530],unknown),([3540],unknown),([3550],unknown),([3560],unknown),([3570],unknown),([3580],unknown),([3590],unknown),([3600],unknown),([3610],unknown),([3620],unknown),([3630],unknown),([3640],unknown),([3650],unknown),([3660],unknown),([3670],unknown),([3680],unknown),([3690],unknown),([3700],unknown),([3710],unknown),([3720],unknown),([3730],unknown),([3740],unknown),([3750],unknown),([3760],unknown),([3770],unknown),([3780],unknown),([3790],unknown),([3800],unknown),([3810],unknown),([3820],unknown),([3830],unknown),([3840],unknown),([3850],unknown),([3860],unknown),([3870],unknown),([3880],unknown),([3890],unknown),([3900],unknown),([3910],unknown),([3920],unknown),([3930],unknown),([3940],unknown),([3950],unknown),([3960],unknown),([3970],unknown),([3980],unknown),([3990],unknown),([4000],unknown),([4010],unknown),([4020],unknown),([4030],unknown),([4040],unknown),([4050],unknown),([4060],unknown),([4070],unknown),([4080],unknown),([4090],unknown),([4100],unknown),([4110],unknown),([4120],unknown),([4130],unknown),([4140],unknown),([4150],unknown),([4160],unknown),([4170],unknown),([4180],unknown),([4190],unknown),([4200],unknown),([4210],unknown),([4220],unknown),([4230],unknown),([4240],unknown),([4250],unknown),([4260],unknown),([4270],unknown),([4280],unknown),([4290],unknown),([4300],unknown),([4310],unknown),([4320],unknown),([4330],unknown),([4340],unknown),([4350],unknown),([4360],unknown),([4370],unknown),([4380],unknown),([4390],unknown),([4400],unknown),([4410],unknown),([4420],unknown),([4430],unknown),([4440],unknown),([4450],unknown),([4460],unknown),([4470],unknown),([4480],unknown),([4490],unknown),([4500],unknown),([4510],unknown),([4520],unknown),([4530],unknown),([4540],unknown),([4550],unknown),([4560],unknown),([4570],unknown),([4580],unknown),([4590],unknown),([4600],unknown),([4610],unknown),([4620],unknown),([4630],unknown),([4640],unknown),([4650],unknown),([4660],unknown),([4670],unknown),([4680],unknown),([4690],unknown),([4700],unknown),([4710],unknown),([4720],unknown),([4730],unknown),([4740],unknown),([4750],unknown),([4760],unknown),([4770],unknown),([4780],unknown),([4790],unknown),([4800],unknown),([4810],unknown),([4820],unknown),([4830],unknown),([4840],unknown),([4850],unknown),([4860],unknown),([4870],unknown),([4880],unknown),([4890],unknown),([4900],unknown),([4910],unknown),([4920],unknown),([4930],unknown),([4940],unknown),([4950],unknown),([4960],unknown),([4970],unknown),([4980],unknown),([4990],unknown),([5000],unknown),([5010],unknown),([5020],unknown),([5030],unknown),([5040],unknown),([5050],unknown),([5060],unknown),([5070],unknown),([5080],unknown),([5090],unknown),([5100],unknown),([5110],unknown),([5120],unknown),([5130],unknown),([5140],unknown),([5150],unknown),([5160],unknown),([5170],unknown),([5180],unknown),([5190],unknown),([5200],unknown),([5210],unknown),([5220],unknown),([5230],unknown),([5240],unknown),([5250],unknown),([5260],unknown),([5270],unknown),([5280],unknown),([5290],unknown),([5300],unknown),([5310],unknown),([5320],unknown),([5330],unknown),([5340],unknown),([5350],unknown),([5360],unknown),([5370],unknown),([5380],unknown),([5390],unknown),([5400],unknown),([5410],unknown),([5420],unknown),([5430],unknown),([5440],unknown),([5450],unknown),([5460],unknown),([5470],unknown),([5480],unknown),([5490],unknown),([5500],unknown),([5510],unknown),([5520],unknown),([5530],unknown),([5540],unknown),([5550],unknown),([5560],unknown),([5570],unknown),([5580],unknown),([5590],unknown),([5600],unknown),([5610],unknown),([5620],unknown),([5630],unknown),([5640],unknown),([5650],unknown),([5660],unknown),([5670],unknown),([5680],unknown),([5690],unknown),([5700],unknown),([5710],unknown),([5720],unknown),([5730],unknown),([5740],unknown),([5750],unknown),([5760],unknown),([5770],unknown),([5780],unknown),([5790],unknown),([5800],unknown),([5810],unknown),([5820],unknown),([5830],unknown),([5840],unknown),([5850],unknown),([5860],unknown),([5870],unknown),([5880],unknown),([5890],unknown),([5900],unknown),([5910],unknown),([5920],unknown),([5930],unknown),([5940],unknown),([5950],unknown),([5960],unknown),([5970],unknown),([5980],unknown),([5990],unknown),([6000],unknown),([6010],unknown),([6020],unknown),([6030],unknown),([6040],unknown),([6050],unknown),([6060],unknown),([6070],unknown),([6080],unknown),([6090],unknown),([6100],unknown),([6110],unknown),([6120],unknown),([6130],unknown),([6140],unknown),([6150],unknown),([6160],unknown),([6170],unknown),([6180],unknown),([6190],unknown),([6200],unknown),([6210],unknown),([6220],unknown),([6230],unknown),([6240],unknown),([6250],unknown),([6260],unknown),([6270],unknown),([6280],unknown),([6290],unknown),([6300],unknown),([6310],unknown),([6320],unknown),([6330],unknown),([6340],unknown),([6350],unknown),([6360],unknown),([6370],unknown),([6380],unknown),([6390],unknown),([6400],unknown),([6410],unknown),([6420],unknown),([6430],unknown),([6440],unknown),([6450],unknown),([6460],unknown),([6470],unknown),([6480],unknown),([6490],unknown),([6500],unknown),([6510],unknown),([6520],unknown),([6530],unknown),([6540],unknown),([6550],unknown),([6560],unknown),([6570],unknown),([6580],unknown),([6590],unknown),([6600],unknown),([6610],unknown),([6620],unknown),([6630],unknown),([6640],unknown),([6650],unknown),([6660],unknown),([6670],unknown),([6680],unknown),([6690],unknown),([6700],unknown),([6710],unknown),([6720],unknown),([6730],unknown),([6740],unknown),([6750],unknown),([6760],unknown),([6770],unknown),([6780],unknown),([6790],unknown),([6800],unknown),([6810],unknown),([6820],unknown),([6830],unknown),([6840],unknown),([6850],unknown),([6860],unknown),([6870],unknown),([6880],unknown),([6890],unknown),([6900],unknown),([6910],unknown),([6920],unknown),([6930],unknown),([6940],unknown),([6950],unknown),([6960],unknown),([6970],unknown),([6980],unknown),([6990],unknown),([7000],unknown),([7010],unknown),([7020],unknown),([7030],unknown),([7040],unknown),([7050],unknown),([7060],unknown),([7070],unknown),([7080],unknown),([7090],unknown),([7100],unknown),([7110],unknown),([7120],unknown),([7130],unknown),([7140],unknown),([7150],unknown),([7160],unknown),([7170],unknown),([7180],unknown),([7190],unknown),([7200],unknown),([7210],unknown),([7220],unknown),([7230],unknown),([7240],unknown),([7250],unknown),([7260],unknown),([7270],unknown),([7280],unknown),([7290],unknown),([7300],unknown),([7310],unknown),([7320],unknown),([7330],unknown),([7340],unknown),([7350],unknown),([7360],unknown),([7370],unknown),([7380],unknown),([7390],unknown),([7400],unknown),([7410],unknown),([7420],unknown),([7430],unknown),([7440],unknown),([7450],unknown),([7460],unknown),([7470],unknown),([7480],unknown),([7490],unknown),([7500],unknown),([7510],unknown),([7520],unknown),([7530],unknown),([7540],unknown),([7550],unknown),([7560],unknown),([7570],unknown),([7580],unknown),([7590],unknown),([7600],unknown),([7610],unknown),([7620],unknown),([7630],unknown),([7640],unknown),([7650],unknown),([7660],unknown),([7670],unknown),([7680],unknown),([7690],unknown),([7700],unknown),([7710],unknown),([7720],unknown),([7730],unknown),([7740],unknown),([7750],unknown),([7760],unknown),([7770],unknown),([7780],unknown),([7790],unknown),([7800],unknown),([7810],unknown),([7820],unknown),([7830],unknown),([7840],unknown),([7850],unknown),([7860],unknown),([7870],unknown),([7880],unknown),([7890],unknown),([7900],unknown),([7910],unknown),([7920],unknown),([7930],unknown),([7940],unknown),([7950],unknown),([7960],unknown),([7970],unknown),([7980],unknown),([7990],unknown),([8000],unknown),([8010],unknown),([8020],unknown),([8030],unknown),([8040],unknown),([8050],unknown),([8060],unknown),([8070],unknown),([8080],unknown),([8090],unknown),([8100],unknown),([8110],unknown),([8120],unknown),([8130],unknown),([8140],unknown),([8150],unknown),([8160],unknown),([8170],unknown),([8180],unknown),([8190],unknown),([8200],unknown),([8210],unknown),([8220],unknown),([8230],unknown),([8240],unknown),([8250],unknown),([8260],unknown),([8270],unknown),([8280],unknown),([8290],unknown),([8300],unknown),([8310],unknown),([8320],unknown),([8330],unknown),([8340],unknown),([8350],unknown),([8360],unknown),([8370],unknown),([8380],unknown),([8390],unknown),([8400],unknown),([8410],unknown),([8420],unknown),([8430],unknown),([8440],unknown),([8450],unknown),([8460],unknown),([8470],unknown),([8480],unknown),([8490],unknown),([8500],unknown),([8510],unknown),([8520],unknown),([8530],unknown),([8540],unknown),([8550],unknown),([8560],unknown),([8570],unknown),([8580],unknown),([8590],unknown),([8600],unknown),([8610],unknown),([8620],unknown),([8630],unknown),([8640],unknown),([8650],unknown),([8660],unknown),([8670],unknown),([8680],unknown),([8690],unknown),([8700],unknown),([8710],unknown),([8720],unknown),([8730],unknown),([8740],unknown),([8750],unknown),([8760],unknown),([8770],unknown),([8780],unknown),([8790],unknown),([8800],unknown),([8810],unknown),([8820],unknown),([8830],unknown),([8840],unknown),([8850],unknown),([8860],unknown),([8870],unknown),([8880],unknown),([8890],unknown),([8900],unknown),([8910],unknown),([8920],unknown),([8930],unknown),([8940],unknown),([8950],unknown),([8960],unknown),([8970],unknown),([8980],unknown),([8990],unknown),([9000],unknown),([9010],unknown),([9020],unknown),([9030],unknown),([9040],unknown),([9050],unknown),([9060],unknown),([9070],unknown),([9080],unknown),([9090],unknown),([9100],unknown),([9110],unknown),([9120],unknown),([9130],unknown),([9140],unknown),([9150],unknown),([9160],unknown),([9170],unknown),([9180],unknown),([9190],unknown),([9200],unknown),([9210],unknown),([9220],unknown),([9230],unknown),([9240],unknown),([9250],unknown),([9260],unknown),([9270],unknown),([9280],unknown),([9290],unknown),([9300],unknown),([9310],unknown),([9320],unknown),([9330],unknown),([9340],unknown),([9350],unknown),([9360],unknown),([9370],unknown),([9380],unknown),([9390],unknown),([9400],unknown),([9410],unknown),([9420],unknown),([9430],unknown),([9440],unknown),([9450],unknown),([9460],unknown),([9470],unknown),([9480],unknown),([9490],unknown),([9500],unknown),([9510],unknown),([9520],unknown),([9530],unknown),([9540],unknown),([9550],unknown),([9560],unknown),([9570],unknown),([9580],unknown),([9590],unknown),([9600],unknown),([9610],unknown),([9620],unknown),([9630],unknown),([9640],unknown),([9650],unknown),([9660],unknown),([9670],unknown),([9680],unknown),([9690],unknown),([9700],unknown),([9710],unknown),([9720],unknown),([9730],unknown),([9740],unknown),([9750],unknown),([9760],unknown),([9770],unknown),([9780],unknown),([9790],unknown),([9800],unknown),([9810],unknown),([9820],unknown),([9830],unknown),([9840],unknown),([9850],unknown),([9860],unknown),([9870],unknown),([9880],unknown),([9890],unknown),([9900],unknown),([9910],unknown),([9920],unknown),([9930],unknown),([9940],unknown),([9950],unknown),([9960],unknown),([9970],unknown),([9980],unknown),([9990],unknown),([10000],unknown),([10010],unknown),([10020],unknown),([10030],unknown),([10040],unknown),([10050],unknown),([10060],unknown),([10070],unknown),([10080],unknown),([10090],unknown),([10100],unknown),([10110],unknown),([10120],unknown),([10130],unknown),([10140],unknown),([10150],unknown),([10160],unknown),([10170],unknown),([10180],unknown),([10190],unknown),([10200],unknown),([10210],unknown),([10220],unknown),([10230],unknown),([10240],unknown),([10250],unknown),([10260],unknown),([10270],unknown),([10280],unknown),([10290],unknown),([10300],unknown),([10310],unknown),([10320],unknown),([10330],unknown),([10340],unknown),([10350],unknown),([10360],unknown),([10370],unknown),([10380],unknown),([10390],unknown),([10400],unknown),([10410],unknown),([10420],unknown),([10430],unknown),([10440],unknown),([10450],unknown),([10460],unknown),([10470],unknown),([10480],unknown),([10490],unknown),([10500],unknown),([10510],unknown),([10520],unknown),([10530],unknown),([10540],unknown),([10550],unknown),([10560],unknown),([10570],unknown),([10580],unknown),([10590],unknown),([10600],unknown),([10610],unknown),([10620],unknown),([10630],unknown),([10640],unknown),([10650],unknown),([10660],unknown),([10670],unknown),([10680],unknown),([10690],unknown),([10700],unknown),([10710],unknown),([10720],unknown),([10730],unknown),([10740],unknown),([10750],unknown),([10760],unknown),([10770],unknown),([10780],unknown),([10790],unknown),([10800],unknown),([10810],unknown),([10820],unknown),([10830],unknown),([10840],unknown),([10850],unknown),([10860],unknown),([10870],unknown),([10880],unknown),([10890],unknown),([10900],unknown),([10910],unknown),([10920],unknown),([10930],unknown),([10940],unknown),([10950],unknown),([10960],unknown),([10970],unknown),([10980],unknown),([10990],unknown),([11000],unknown),([11010],unknown),([11020],unknown),([11030],unknown),([11040],unknown),([11050],unknown),([11060],unknown),([11070],unknown),([11080],unknown),([11090],unknown),([11100],unknown),([11110],unknown),([11120],unknown),([11130],unknown),([11140],unknown),([11150],unknown),([11160],unknown),([11170],unknown),([11180],unknown),([11190],unknown),([11200],unknown),([11210],unknown),([11220],unknown),([11230],unknown),([11240],unknown),([11250],unknown),([11260],unknown),([11270],unknown),([11280],unknown),([11290],unknown),([11300],unknown),([11310],unknown),([11320],unknown),([11330],unknown),([11340],unknown),([11350],unknown),([11360],unknown),([11370],unknown),([11380],unknown),([11390],unknown),([11400],unknown),([11410],unknown),([11420],unknown),([11430],unknown),([11440],unknown),([11450],unknown),([11460],unknown),([11470],unknown),([11480],unknown),([11490],unknown),([11500],unknown),([11510],unknown),([11520],unknown),([11530],unknown),([11540],unknown),([11550],unknown),([11560],unknown),([11570],unknown),([11580],unknown),([11590],unknown),([11600],unknown),([11610],unknown),([11620],unknown),([11630],unknown),([11640],unknown),([11650],unknown),([11660],unknown),([11670],unknown),([11680],unknown),([11690],unknown),([11700],unknown),([11710],unknown),([11720],unknown),([11730],unknown),([11740],unknown),([11750],unknown),([11760],unknown),([11770],unknown),([11780],unknown),([11790],unknown),([11800],unknown),([11810],unknown),([11820],unknown),([11830],unknown),([11840],unknown),([11850],unknown),([11860],unknown),([11870],unknown),([11880],unknown),([11890],unknown),([11900],unknown),([11910],unknown),([11920],unknown),([11930],unknown),([11940],unknown),([11950],unknown),([11960],unknown),([11970],unknown),([11980],unknown),([11990],unknown),([12000],unknown)}}</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_0ftvm56" associationDirection="None" sourceRef="Activity_0gzjx4y" targetRef="TextAnnotation_1mnr42g" />
+    <bpmn:textAnnotation id="TextAnnotation_1hv5exf">
+      <bpmn:text>HC::hc1#0.2:7\le kpi1\wedge kpi1\le 10|hc2#0.2:kpi4\le 0.2|hc3#0.2:4\le HC|hc4#0.2:D&lt; 5|hc5#0.1:D=CI|hc6#0.1:R=CO</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_1ve71jy" associationDirection="None" sourceRef="DataObjectReference_0qis4ag" targetRef="TextAnnotation_1hv5exf" />
+    <bpmn:textAnnotation id="TextAnnotation_1hec1ao">
+      <bpmn:text>SC::sc1#0.333:kpi3\le UB|sc2#0.333:\max kpi6|sc3#0.334:\max EP|sc4#0.0:noneKPI&gt;0</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_0lldxxk" associationDirection="None" sourceRef="DataObjectReference_0geumcu" targetRef="TextAnnotation_1hec1ao" />
+    <bpmn:textAnnotation id="TextAnnotation_0x51ulc">
+      <bpmn:text>KPIs::kpi1=R-D|kpi2=[FP,TP]\cdot TV|kpi3=(kpi2+HP+SF)\times EP|kpi4=kpi2\div kpi3|kpi5=[\mm(FP)+\mm(FT),\mm(TP)+\mm(RT)]\cdot TV|kpi6=[kpi5,\mm(HP)+\mm(HC)]\cdot PV|noneKPI=F+T+H+kpi1</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_1oj1ahn" associationDirection="None" sourceRef="DataObjectReference_14bp6ey" targetRef="TextAnnotation_0x51ulc" />
+    <bpmn:textAnnotation id="TextAnnotation_093dnef">
+      <bpmn:text>C={CO:{[0],[1],[2],[3],[4],[5],[6],[7],[8],[9],[10],[11],[12],[13],[14],[15]}}||U={}}</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_1rdeunl" associationDirection="None" sourceRef="Activity_14m3b29" targetRef="TextAnnotation_093dnef" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1tjlsxf">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1y8s8wo">
+        <dc:Bounds x="72" y="272" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="158" y="315" width="33" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_07huhsm_di" bpmnElement="Activity_07huhsm">
+        <dc:Bounds x="220" y="250" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0haiyaz_di" bpmnElement="Activity_0haiyaz">
+        <dc:Bounds x="490" y="170" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1sq961b_di" bpmnElement="Gateway_1sq961b" isMarkerVisible="true">
+        <dc:Bounds x="645" y="185" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="685" y="223" width="30" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1hfbgui_di" bpmnElement="Gateway_0zubpqk">
+        <dc:Bounds x="415" y="265" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="455" y="313" width="30" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0xd34ld_di" bpmnElement="Activity_0xd34ld">
+        <dc:Bounds x="730" y="80" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_17il0g6_di" bpmnElement="Activity_17il0g6">
+        <dc:Bounds x="730" y="240" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_10gczf1_di" bpmnElement="Gateway_10gczf1" isMarkerVisible="true">
+        <dc:Bounds x="865" y="185" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="904" y="223" width="32" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0gzjx4y_di" bpmnElement="Activity_0gzjx4y">
+        <dc:Bounds x="730" y="340" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1h8xnxc_di" bpmnElement="Gateway_0b85drz">
+        <dc:Bounds x="945" y="265" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="994" y="303" width="32" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0nslsrt_di" bpmnElement="Activity_0nslsrt">
+        <dc:Bounds x="1060" y="250" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0ugkesj_di" bpmnElement="Event_0ugkesj">
+        <dc:Bounds x="1232" y="272" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataObjectReference_0qis4ag_di" bpmnElement="DataObjectReference_0qis4ag">
+        <dc:Bounds x="302" y="585" width="36" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="280" y="561" width="80" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1oo9pft" bpmnElement="DataObjectReference_0geumcu">
+        <dc:Bounds x="582" y="585" width="36" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="563" y="642" width="76" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataObjectReference_14bp6ey_di" bpmnElement="DataObjectReference_14bp6ey">
+        <dc:Bounds x="122" y="585" width="36" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="128" y="642" width="24" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1bwtbj5" bpmnElement="Activity_14m3b29">
+        <dc:Bounds x="500" y="340" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_07gqhxk_di" bpmnElement="TextAnnotation_07gqhxk">
+        <dc:Bounds x="40" y="110" width="309.99564459930315" height="69.98887100840003" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_0880qsa_di" bpmnElement="TextAnnotation_0880qsa">
+        <dc:Bounds x="280" y="-10" width="320" height="41" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_0xp5xkp_di" bpmnElement="TextAnnotation_0xp5xkp">
+        <dc:Bounds x="1010" y="170" width="239.99704491725765" height="69.9960622945294" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_1wtkare_di" bpmnElement="TextAnnotation_1wtkare">
+        <dc:Bounds x="500" y="-1070" width="470" height="775" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_0yk2u12_di" bpmnElement="TextAnnotation_0yk2u12">
+        <dc:Bounds x="1190" y="-1126" width="400" height="833" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_1mnr42g_di" bpmnElement="TextAnnotation_1mnr42g">
+        <dc:Bounds x="990" y="760" width="359.97246087160505" height="5857.681500927801" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_1hv5exf_di" bpmnElement="TextAnnotation_1hv5exf">
+        <dc:Bounds x="245" y="804" width="375" height="40.65040650406504" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_1hec1ao_di" bpmnElement="TextAnnotation_1hec1ao">
+        <dc:Bounds x="630" y="760" width="270" height="41" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_0x51ulc_di" bpmnElement="TextAnnotation_0x51ulc">
+        <dc:Bounds x="-110" y="790" width="319.98889316111354" height="69.69851096194242" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_093dnef_di" bpmnElement="TextAnnotation_093dnef">
+        <dc:Bounds x="290" y="457" width="330" height="41" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_0ep7te8_di" bpmnElement="DataOutputAssociation_0ep7te8">
+        <di:waypoint x="93" y="308" />
+        <di:waypoint x="137" y="585" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_1hqwdxy_di" bpmnElement="DataOutputAssociation_1hqwdxy">
+        <di:waypoint x="100" y="304" />
+        <di:waypoint x="302" y="585" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_1ks85bi_di" bpmnElement="DataOutputAssociation_1ks85bi">
+        <di:waypoint x="105" y="300" />
+        <di:waypoint x="500" y="530" />
+        <di:waypoint x="582" y="590" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0jk4e81_di" bpmnElement="Flow_0jk4e81">
+        <di:waypoint x="108" y="290" />
+        <di:waypoint x="220" y="290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_10f8q0i_di" bpmnElement="Flow_10f8q0i">
+        <di:waypoint x="320" y="290" />
+        <di:waypoint x="415" y="290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1wm4nsa_di" bpmnElement="Flow_1wm4nsa">
+        <di:waypoint x="440" y="265" />
+        <di:waypoint x="440" y="210" />
+        <di:waypoint x="490" y="210" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1kj7tdd_di" bpmnElement="Flow_1kj7tdd">
+        <di:waypoint x="440" y="315" />
+        <di:waypoint x="440" y="380" />
+        <di:waypoint x="500" y="380" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_08ng64i_di" bpmnElement="Flow_08ng64i">
+        <di:waypoint x="590" y="210" />
+        <di:waypoint x="645" y="210" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_11yk7ub_di" bpmnElement="Flow_11yk7ub">
+        <di:waypoint x="670" y="185" />
+        <di:waypoint x="670" y="120" />
+        <di:waypoint x="730" y="120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="665" y="101" width="42" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ctawuf_di" bpmnElement="Flow_1ctawuf">
+        <di:waypoint x="670" y="235" />
+        <di:waypoint x="670" y="280" />
+        <di:waypoint x="730" y="280" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="665" y="283" width="42" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_105x94q_di" bpmnElement="Flow_105x94q">
+        <di:waypoint x="830" y="280" />
+        <di:waypoint x="890" y="280" />
+        <di:waypoint x="890" y="235" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0a5t52k_di" bpmnElement="Flow_0a5t52k">
+        <di:waypoint x="830" y="120" />
+        <di:waypoint x="890" y="120" />
+        <di:waypoint x="890" y="185" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_149bjnu_di" bpmnElement="Flow_149bjnu">
+        <di:waypoint x="830" y="380" />
+        <di:waypoint x="970" y="380" />
+        <di:waypoint x="970" y="315" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0oziuos_di" bpmnElement="Flow_0oziuos">
+        <di:waypoint x="915" y="210" />
+        <di:waypoint x="970" y="210" />
+        <di:waypoint x="970" y="265" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0d29mql_di" bpmnElement="Flow_0d29mql">
+        <di:waypoint x="995" y="290" />
+        <di:waypoint x="1060" y="290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0k2a3le_di" bpmnElement="Flow_0k2a3le">
+        <di:waypoint x="1160" y="290" />
+        <di:waypoint x="1232" y="290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1hfuhej_di" bpmnElement="Flow_1hfuhej">
+        <di:waypoint x="600" y="380" />
+        <di:waypoint x="730" y="380" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_0bijgfp_di" bpmnElement="Association_0bijgfp">
+        <di:waypoint x="263" y="250" />
+        <di:waypoint x="248" y="180" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1g42sl7_di" bpmnElement="Association_1g42sl7">
+        <di:waypoint x="529" y="170" />
+        <di:waypoint x="492" y="31" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1rzluut_di" bpmnElement="Association_1rzluut">
+        <di:waypoint x="1118" y="250" />
+        <di:waypoint x="1120" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_0sr7jrx_di" bpmnElement="Association_0sr7jrx">
+        <di:waypoint x="786" y="80" />
+        <di:waypoint x="752" y="-295" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_0v69khr_di" bpmnElement="Association_0v69khr">
+        <di:waypoint x="807" y="240" />
+        <di:waypoint x="1127" y="-709" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_0ftvm56_di" bpmnElement="Association_0ftvm56">
+        <di:waypoint x="806" y="420" />
+        <di:waypoint x="1023" y="760" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1ve71jy_di" bpmnElement="Association_1ve71jy">
+        <di:waypoint x="321" y="635" />
+        <di:waypoint x="324" y="804" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_0lldxxk_di" bpmnElement="Association_0lldxxk">
+        <di:waypoint x="618" y="634" />
+        <di:waypoint x="711" y="760" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1oj1ahn_di" bpmnElement="Association_1oj1ahn">
+        <di:waypoint x="122" y="630" />
+        <di:waypoint x="-25" y="790" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1rdeunl_di" bpmnElement="Association_1rdeunl">
+        <di:waypoint x="528" y="420" />
+        <di:waypoint x="508" y="457" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

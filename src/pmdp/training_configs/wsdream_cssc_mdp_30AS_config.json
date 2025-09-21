@@ -1,0 +1,36 @@
+{  "bpmn_config": {
+    "description": "BPMN model configuration",
+    "bpmn_base_path": "BPMN_Models/Benchmark_experiment_models/Sequence_CSSC_10Activity.bpmn"
+  },
+  "wsdream_experiment_config": {
+    "description": "Configuration for WSDream experiment",
+    "abstract_service_count": 10,
+    "candidates_per_abstract": 116,
+    "total_candidates": 1160
+  },
+  "random_seeds": {
+    "description": "Random seeds for reproducibility",
+    "values": [42, 123, 168, 99, 7788]
+  },
+  "training_episodes": {
+    "description": "Training episode configuration",
+    "total_episodes": 20000,
+    "experiment_instances": 5
+  },
+  "evaluation_settings": {
+    "description": "Evaluation parameters",
+    "eval_repetitions": 500,
+    "eval_interval": 200
+  },
+  "dqn_hyperparameters": {
+    "description": "DQN and PER hyperparameters",
+    "initial_learning_rate": 0.5
+  },
+  "mode_flags": {
+    "description": "Operation mode flags",
+
+    "evaluate_mode": true
+
+  }
+
+}

@@ -1,0 +1,62 @@
+{ 
+  "bpmn_config": {
+    "description": "BPMN model and service composition parameters",
+    "bpmn_base_path": "BPMN_Models/Benchmark_experiment_models/Sequence_CSSC_10Activity_for_PMDP.bpmn",
+    "uncontrol_var_unknow_distributions": null,
+    "parallel_async_probability": 0.3
+  },
+    "wsdream_experiment_config": {
+    "description": "Configuration for WSDream experiment",
+    "abstract_service_count": 10,
+    "candidates_per_abstract": 116,
+    "total_candidates": 1160
+  },
+  "random_seeds": {
+    "description": "Random seeds for reproducibility of experiments",
+    "values": [42, 123, 168, 99, 7788]
+  },
+  "training_episodes": {
+    "description": "Configuration for training episodes",
+    "total_episodes": 100,
+    "warmup_episodes": 50,
+    "experiment_instances": 1
+  },
+  "evaluation_settings": {
+    "description": "Evaluation parameters",
+    "eval_repetitions": 50,
+    "eval_interval": 20
+  },
+  "dqn_hyperparameters": {
+    "description": "DQN and PER related parameters",
+    "batch_size": 16,
+    "n_step": 1,
+    "initial_learning_rate": 0.00375,
+    "gamma": 0.1,
+    "tau": 0.003,
+    "per_alpha": 0.5,
+    "per_beta_start": 0.1,
+    "per_beta_end": 0.6,
+    "per_buffer_capacity": 10000
+  },
+  "constraint_weights": {
+    "description": "Weights for hard and soft constraints",
+    "whc": 0.0,
+    "wsc": 1.0
+  },
+  "mode_flags": {
+    "description": "Boolean flags for different operation modes",
+    "punish_mode": true,
+    "evaluate_mode": true,
+    "force_evaluate_mode": false,
+    "experiment_timer_mode": false,
+    "random_policy_mode": false,
+    "do_time_experiment": false,
+    "nmdp_mode": false,
+    "cssc_mode": true
+    
+  },
+  "timer_settings": {
+    "description": "Settings for training time measurement",
+    "timer_episodes": 20000
+  }
+}
