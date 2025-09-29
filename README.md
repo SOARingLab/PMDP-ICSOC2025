@@ -2,8 +2,8 @@
 
 ## Overview  
 
-This repository hosts the prototype code and supplementary materials (a separate PDF) for the submitted paper:  
-> **P-MDP: A Framework to Optimize NFPs of Business Processes in Uncertain Environments** (authors anonymized for double-blind review).  
+This repository hosts the prototype code and [supplementary materials](./Supplementary_PMDP.pdf) for the paper published at **ICSOC 2025** (the 23rd International Conference on Service-Oriented Computing). The paper is titled:  
+> **P-MDP: A Framework to Optimize NFPs of Business Processes in Uncertain Environments**.  
 
 The supplementary materials include in-depth technical specifications and formal mathematical definitions omitted from the main paper, providing essential details for implementing and validating the P-MDP (Process-aware Markov Decision Process) framework.  
 
