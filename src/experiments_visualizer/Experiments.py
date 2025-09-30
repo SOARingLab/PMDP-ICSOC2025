@@ -13,6 +13,8 @@ from matplotlib.transforms import Transform
 import matplotlib.scale as mscale
 from matplotlib.colors import to_rgba, to_rgb
 
+plot_counter = 0
+
 ################ The experiment for the tranining time (each-episode) in different candidate services and abstract services ################
 
 def load_data_from_file(
@@ -576,10 +578,33 @@ def plot_Experiment_pictures(
 
     plt.subplots_adjust(bottom=0.15)
     plt.tight_layout()
+    
+    
+    
+    
+    if os.environ.get('IS_IN_DOCKER') == 'true' and ax is None:
+        # for docker env, save picture only
+        
+        global plot_counter
+        plot_counter += 1
+        filename = f"plot_result_{plot_counter}.png" # e.g.,: plot_result_1.png, plot_result_2.png
+
+        output_path = os.path.join("/app/src/training_records", filename)
+
+        plt.savefig(output_path)
+        print(f"Running in Docker. Plot saved to {output_path}")
+    else:
+        # local windows, show directly
+        print("Running in local environment. Displaying plot.")
+        
+        # Show plot if no external ax is provided
+        if ax is None:
+            plt.show()
+
 
     # Show plot if no external ax is provided
-    if ax is None:
-        plt.show()
+    #if ax is None:
+        #plt.show()
 
     return stats  # Return statistical results
 
@@ -861,6 +886,7 @@ def plot_parameter_comparison(
             'avg_SE': item['avg_SE']
         }
         print(filtered_item)
+    print("\n\n")
 
     return normalized_stats
     
@@ -909,10 +935,26 @@ def plot_3d_surface(data,
 
     # Adjust viewing angle
     ax.view_init(elev=30, azim=45)
+    
+    
+    
+    if os.environ.get('IS_IN_DOCKER') == 'true':
+        # for docker env, save picture only
+        global plot_counter
+        plot_counter += 1
+        filename = f"plot_result_{plot_counter}.png" # e.g.,: plot_result_1.png, plot_result_2.png
 
-    # Adjust layout and display
-    plt.tight_layout()
-    plt.show()
+        output_path = os.path.join("/app/src/training_records", filename)
+
+        plt.savefig(output_path)
+        print(f"Running in Docker. Plot saved to {output_path}")
+    else:
+        # 如果是在本地环境 (或其他没有设置该变量的环境)，则显示图片
+        print("Running in local environment. Displaying plot.")
+
+        # Adjust layout and display
+        plt.tight_layout()
+        plt.show()
 
 
 
@@ -1095,9 +1137,23 @@ def plot_cumulative_rewards(
         legend_position=legend_position
     )
     
-    # Adjust layout and show
-    plt.tight_layout()
-    plt.show()
+    if os.environ.get('IS_IN_DOCKER') == 'true':
+        # for docker env, save picture only
+        global plot_counter
+        plot_counter += 1
+        filename = f"plot_result_{plot_counter}.png" # e.g.,: plot_result_1.png, plot_result_2.png
+
+        output_path = os.path.join("/app/src/training_records", filename)
+
+        plt.savefig(output_path)
+        print(f"Running in Docker. Plot saved to {output_path}")
+    else:
+        # 如果是在本地环境 (或其他没有设置该变量的环境)，则显示图片
+        print("Running in local environment. Displaying plot.")
+    
+        # Adjust layout and show
+        plt.tight_layout()
+        plt.show()
     
 
 if __name__ == "__main__":

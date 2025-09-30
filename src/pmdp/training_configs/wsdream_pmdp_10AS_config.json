@@ -17,14 +17,14 @@
   },
   "training_episodes": {
     "description": "Configuration for training episodes",
-    "total_episodes": 100,
-    "warmup_episodes": 50,
-    "experiment_instances": 1
+    "total_episodes": 20000,
+    "warmup_episodes": 500,
+    "experiment_instances": 5
   },
   "evaluation_settings": {
     "description": "Evaluation parameters",
-    "eval_repetitions": 50,
-    "eval_interval": 20
+    "eval_repetitions": 500,
+    "eval_interval": 200
   },
   "dqn_hyperparameters": {
     "description": "DQN and PER related parameters",

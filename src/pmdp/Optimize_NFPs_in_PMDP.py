@@ -3693,7 +3693,7 @@ def CSSC_MDP_with_Qlearing(bpmn_file_path='', n_abstract_number=30, total_candid
         end_index = start_index + len(item[2]) - 1
         NMDP_result_ActionSpaceverticesOrder_rowsColumnsTags_inTensor_list[1].append([start_index, end_index])
 
-        print(len(item[2]))
+        #print(len(item[2]))
         for var_value in item[2]:
             if var_name.startswith('C'):
                 var_value = var_value.replace("[", "").replace("]", "")
@@ -3784,7 +3784,7 @@ def CSSC_MDP_with_Qlearing(bpmn_file_path='', n_abstract_number=30, total_candid
         if e % 100 == 0 and e > 0:
             elapsed_time = time.time() - start_time
             Training_time_record.append(elapsed_time)
-            print(f"Episode {e}: Elapsed Time = {elapsed_time:.2f} seconds")
+            #print(f"Episode {e}: Elapsed Time = {elapsed_time:.2f} seconds")
 
         done = False
 
@@ -3982,7 +3982,7 @@ def CSSC_MDP_with_Qlearing(bpmn_file_path='', n_abstract_number=30, total_candid
                                                                             CSSC_MDP_SC_list)    
             if e % eval_interval == 0  or (e == n_episodes - 1):
                 print(f"\n################ CSSC-MDP Episode {e}, Average Success Rate: {success_rate} ################")
-                print(f"################ CSSC-MDP Episode {e}, Average Average Total Reward: {avg_SC_reward + avg_HC_reward} ################")
+                #print(f"################ CSSC-MDP Episode {e}, Average Average Total Reward: {avg_SC_reward + avg_HC_reward} ################")
             '''
             if e == n_episodes - 1:
                 evaluation_rewards[-1] = avg_reward
@@ -4891,9 +4891,9 @@ def SAN_main_with_n_steps(bpmn_base_path = '', n_episodes=2000, CET_mode=False, 
              gamma=0.9, tau = 0.005, PER_alpha = 0.6, batch_size=32, max_samples_buffer=10000, n_warmup_episods=1, initial_learning_rate=0.01,
              whc=0.5, wsc=0.5, eval_interval=100, eval_number=100, n_step=3, PER_beta_start = 0.4, PER_beta_end = 1.0, parallel_asynchronous_prob = 0.05, MDP_example_mode = 'PMDP', instance_evaluation_rewards_list = [],  instance_evaluation_HC_rewards_list = [], 
             instance_evaluation_SC_rewards_list = [], CSSC_mode = False, NMDP_mode = False, n_abstract_number = 10, total_candidates_num = 580 * 10, Evaluate_mode = False, Training_time_record =[], Whatever_Evaluate_mode = False, experiment_timer_mode = False, experiment_timer_episodes = 20000, ex_data = [],
-            uncontrol_var_unknow_distributions=None, mode = 'any', random_policy_mode = False):
+            uncontrol_var_unknow_distributions=None, mode = 'any', random_policy_mode = False, All_seed_Experi_AccumulatedRewards_records = [[],[],[]], last_seed = False):
     
-    print(CSSC_mode)
+    #print(CSSC_mode)
 
     if CSSC_mode:
         ### Related work example: CSSC-MDP ###
@@ -5080,7 +5080,7 @@ def SAN_main_with_n_steps(bpmn_base_path = '', n_episodes=2000, CET_mode=False, 
                 elapsed_time = time.time() - start_time
                 Training_time_record.append(elapsed_time)
                 print(f"Episode {episode}: Elapsed Time = {elapsed_time:.2f} seconds")
-                print(f"Episode {episode} started, PER beta: {PER_Buffer.beta}")
+                #print(f"Episode {episode} started, PER beta: {PER_Buffer.beta}")
 
             # initialize environment and state
             pmdp_env.current_state = pmdp_env.initialize_state()
@@ -5213,9 +5213,10 @@ def SAN_main_with_n_steps(bpmn_base_path = '', n_episodes=2000, CET_mode=False, 
                     AccumulatedRewards_records[2].append(accumulate_rewards_list[-1][2])
 
                     if episode % 50 == 0 and mode == 'QWS':
-                        print(f"Episode {episode}, SBI:{pmdp_env.context['SBI']}\n")
-                        print(f"Episode {episode}, LTS:{pmdp_env.context['LTS']}\n")
-                        #print(f"Episode {episode}, LTS:{pmdp_env.context['avgCom5']}\n")
+                        #print(f"Episode {episode}, SBI:{pmdp_env.context['SBI']}\n")
+                        #print(f"Episode {episode}, LTS:{pmdp_env.context['LTS']}\n")
+                        pass
+                        
 
                     if episode % 2000 == 0:
                         pass
@@ -5268,10 +5269,11 @@ def SAN_main_with_n_steps(bpmn_base_path = '', n_episodes=2000, CET_mode=False, 
             if episode % eval_interval == 0  or  (episode == n_episodes + n_warmup_episods - 1):
                 if not CSSC_mode:
                     print(f"\n################ Episode {episode}, Average Evaluation Reward: {result1}, Average HC Reward: {result2}, Average SC Reward: {result1 - result2} ################, ")
-                    print(f"################ Episode {episode}, Buffer beta: {PER_Buffer.beta} ################")
+                    #print(f"################ Episode {episode}, Buffer beta: {PER_Buffer.beta} ################")
                 elif CSSC_mode:
-                    print(f"\n################ Episode {episode}, Average Service Composition Success Rate: {result1}, Average total Reward: {result2} ################")
-                    print(f"################ Episode {episode}, Buffer beta: {PER_Buffer.beta} ################")
+                    #print(f"\n################ Episode {episode}, Average Service Composition Success Rate: {result1}, Average total Reward: {result2} ################")
+                    print(f"\n################ Episode {episode}, Average Service Composition Success Rate: {result1} ################")
+                    #print(f"################ Episode {episode}, Buffer beta: {PER_Buffer.beta} ################")
 
             evaluation_rewards.append(result1)
             evaluation_HC_rewards.append(result2)
@@ -5296,47 +5298,60 @@ def SAN_main_with_n_steps(bpmn_base_path = '', n_episodes=2000, CET_mode=False, 
     instance_evaluation_rewards_list.append(evaluation_rewards)
     instance_evaluation_HC_rewards_list.append(evaluation_HC_rewards)
     instance_evaluation_SC_rewards_list.append(evaluation_SC_rewards)
-
-    # Create "training_records" directory if it doesn't exist
-    experiment_dir = "training_records"
-    os.makedirs(experiment_dir, exist_ok=True)
     
+    if not last_seed:
+        All_seed_Experi_AccumulatedRewards_records[0].append(AccumulatedRewards_records[0])
+        All_seed_Experi_AccumulatedRewards_records[1].append(AccumulatedRewards_records[1])
+        All_seed_Experi_AccumulatedRewards_records[2].append(AccumulatedRewards_records[2])
+        
+    else:
+        
+        All_seed_Experi_AccumulatedRewards_records[0].append(AccumulatedRewards_records[0])
+        All_seed_Experi_AccumulatedRewards_records[1].append(AccumulatedRewards_records[1])
+        All_seed_Experi_AccumulatedRewards_records[2].append(AccumulatedRewards_records[2])
+        
     
-    # Construct full file path in the experiment directory
-    filename = f"{process_id}_accumulatedRewards_records.txt"
-    full_path = os.path.join(experiment_dir, filename)
+        # Create "training_records" directory if it doesn't exist
+        experiment_dir = "training_records"
+        os.makedirs(experiment_dir, exist_ok=True)
+        
+        
+        # Construct full file path in the experiment directory
+        filename = f"{process_id}_accumulatedRewards_records_for_{n_episodes + n_warmup_episods}_episodes_of_training.txt"
+        full_path = os.path.join(experiment_dir, filename)
 
-    
-    prompts = ['total_rewards:\n', 'hc_rewards:\n', 'sc_rewards:\n']
+        
+        prompts = ['total_rewards:\n', 'hc_rewards:\n', 'sc_rewards:\n']
 
-    
-    with open(full_path, 'w') as file:
-        for i, sub_list in enumerate(AccumulatedRewards_records):
-            # Get the prompt information corresponding to the current line
-            prompt = prompts[i]
-            # Convert the sub-list elements to strings and join with commas
-            line = ', '.join(str(item) for item in sub_list)
-            # Add [[ and ]] around each line, along with the prompt and a newline
-            line_with_brackets = f"{prompt} [[{line}]]\n"
-            # Write the processed lines to a file
-            file.write(line_with_brackets)
-    print(f"\n {AccumulatedRewards_records[2][-1]}")
+        
+        with open(full_path, 'w') as file:
+            for i, sub_list in enumerate(All_seed_Experi_AccumulatedRewards_records):
+                # Get the prompt information corresponding to the current line
+                prompt = prompts[i]
+                # Convert the sub-list elements to strings and join with commas
+                line = ', '.join(str(item) for item in sub_list)
+                # Add [ and ] around each line, along with the prompt and a newline
+                line_with_brackets = f"{prompt} [{line}]\n"
+                # Write the processed lines to a file
+                file.write(line_with_brackets)
+        #print(f"\n {AccumulatedRewards_records[2][-1]}")
 
-    print(f"\nAccumulated Rewards Records saved to {filename}")
+        print(f"\nAccumulated Rewards Records ({n_episodes + n_warmup_episods} episodes of training) been saved to  \"training_records\\{filename}\"")
+        
+        ### Below is used to print the transition count, especially for concurrent flows (self-transition)
+        #print(episode_steps)
 
 
-
-    print(episode_steps)
-
-
-    return 
+    return All_seed_Experi_AccumulatedRewards_records
 
     
 def save_experiment_rollout_data(
+    pmdp_for_cssc,
     insEval_2Dlist,
     Training_time_record,
     Evaluate_mode,
     process_id
+    
 ):
     """
     Save experiment data to files, including evaluation reward data and training time records (stored in the same directory).
@@ -5371,14 +5386,23 @@ def save_experiment_rollout_data(
         f"{process_id}_rollout_rewards.txt"
     )
     
-    # Define titles for each reward data (corresponds to the order in the list)
-    rewards_titles = [
-        "Total_rollout_rewards:\n",
-        "HC_rollout_rewards:\n",
-        "SC_rollout_rewards:\n"
-    ]
-    
-    print(insEval_2Dlist)
+    if not pmdp_for_cssc:
+        # Define titles for each reward data (corresponds to the order in the list)
+        rewards_titles = [
+            "Total_rollout_rewards:\n",
+            "HC_rollout_rewards:\n",
+            "SC_rollout_rewards:\n"
+        ]
+    else:
+        # Define titles for each reward data (corresponds to the order in the list)
+        rewards_titles = [
+            "Average Success Rate:\n"
+        ]
+        
+        
+    #display_items = [item.replace('\n', '').replace(':', '') for item in rewards_titles]
+    #print(f"\nThe following data is composed of these items: {', '.join(display_items)}")
+    #print(insEval_2Dlist)
 
     # Save evaluation reward data with corresponding titles
     with open(data_file_path, 'w') as file:
@@ -5387,7 +5411,7 @@ def save_experiment_rollout_data(
             line = ','.join(map(str, rewards))
             file.write(line + '\n\n')  # Add empty line after data for separation
     
-    print(f"Experiment data has been saved to {data_file_path}")
+    print(f"\nRollout Experiment data has been saved to \"{data_file_path}\"")
 
 
 
@@ -5480,15 +5504,16 @@ def run_pmdp_experiments(
         abstract_number_list = abstract_number_list or [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
         candidate_number_list = candidate_number_list or [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
         max_PER_buffer_list = max_PER_buffer_list or [10000] * len(abstract_number_list)
+        
+    All_seed_Experi_AccumulatedRewards_records = [[],[],[]]
 
     if not Do_time_experiment:
         if Evaluate_mode:
-            print(f"\n #####################\n Notice: Evaluate_mode (recording training data) is True, "
-                  f"training time may be longer than expected in evaluation mode. \n #####################\n")
+            print(f"\n \n ############################################################################################################################## \n\n Notice: Evaluate_mode is True (i.e., Rollout Experiment is activated), " f"training time in evaluation mode may be longer than expected because the Rollout Experiment. \n \n ##############################################################################################################################\n\n")
         # Part 1: Run multi-instance PMDP experiments
         for _ in range(experiment_instance_number):
             # Print experiment configuration
-            print(f"PMDP Experiment Instance {_ + 1} with setting: {n_step}-Step TD, Batch Size: {batch_size}, "
+            print(f"\nPMDP Experiment Instance {_ + 1} with setting: {n_step}-Step TD, Batch Size: {batch_size}, "
                 f"Learning Rate: {initial_learning_rate}, Punish Mode: {punish_mode}, Gamma: {gamma}, Tau: {tau}, "
                 f"PER_alpha: {PER_alpha}, PER_beta_start: {PER_beta_start}, PER_beta_end: {PER_beta_end}, "
                 f"n_warmup_episods: {n_warmup_episods}, Total Experiments: {experiment_instance_number}")
@@ -5497,9 +5522,13 @@ def run_pmdp_experiments(
             seed = seeds[0 + _]
             set_seed(seed)  # Assume set_seed is defined externally
             print(f"Seed: {seed}")
+            if _ == experiment_instance_number-1:
+                last_seed = True
+            else:
+                last_seed = False
 
             # Run main experiment function
-            SAN_main_with_n_steps(  # Assume SAN_main_with_n_steps is defined externally
+            All_seed_Experi_AccumulatedRewards_records = SAN_main_with_n_steps(  # Assume SAN_main_with_n_steps is defined externally
                 bpmn_base_path=bpmn_base_path,
                 n_episodes=n_episodes - n_warmup_episods,
                 CET_mode=False,
@@ -5532,7 +5561,9 @@ def run_pmdp_experiments(
                 experiment_timer_mode=experiment_timer_mode,
                 experiment_timer_episodes=experiment_timer_episodes,
                 uncontrol_var_unknow_distributions=uncontrol_var_unknow_distributions,
-                random_policy_mode=random_policy_mode
+                random_policy_mode=random_policy_mode,
+                All_seed_Experi_AccumulatedRewards_records = All_seed_Experi_AccumulatedRewards_records,
+                last_seed = last_seed
             )
             reset_mappings()  # Assume reset_mappings is defined externally
 
@@ -5571,9 +5602,15 @@ def run_pmdp_experiments(
                 seed = seeds[0]
                 set_seed(seed)
                 print(f"Seed: {seed}")
+                
+                
+                if _ == experiment_instance_number-1:
+                    last_seed = True
+                else:
+                    last_seed = False
 
                 # Run main experiment function (collect training time data)
-                SAN_main_with_n_steps(
+                All_seed_Experi_AccumulatedRewards_records = SAN_main_with_n_steps(
                     bpmn_base_path=bpmn_path,
                     n_episodes=n_episodes - n_warmup_episods,
                     CET_mode=False,
@@ -5605,7 +5642,9 @@ def run_pmdp_experiments(
                     Whatever_Evaluate_mode=Whatever_Evaluate_mode,
                     experiment_timer_mode=experiment_timer_mode,
                     experiment_timer_episodes=experiment_timer_episodes,
-                    ex_data=ex_data
+                    ex_data=ex_data,
+                    All_seed_Experi_AccumulatedRewards_records = All_seed_Experi_AccumulatedRewards_records,
+                    last_seed = last_seed
                 )
                 reset_mappings()
 
@@ -5662,14 +5701,20 @@ def training_pmdp(config_filename="default_config.json", process_id=None):
             # Call runtime calculation function (assumed function name is calculate_distributions)
             calculated_distributions = get_travelAgency_distribution()  # Your custom calculation function
             uncontrolled_distributions = calculated_distributions
-            print("TA")
+            print("TravelAgency Case")
         elif 'QWS' in config["bpmn_config"]["bpmn_base_path"]:
             calculated_distributions = get_QWS_distribution('Datasets/QWS/normalized_chunks_10_AbstractServices_Eech_has_250_ConcreteServices.txt', 10)
             uncontrolled_distributions = calculated_distributions
-            print("QWS")
+            print("QWS Case")
         else:
             # Use the specific value provided in the configuration
             uncontrolled_distributions = raw_distributions
+            
+        if 'Sequence_CSSC' in config["bpmn_config"]["bpmn_base_path"]:
+            pmdp_for_cssc = True 
+            print("Benchmark Case")
+        else:
+            pmdp_for_cssc = False
                 
         
 
@@ -5744,24 +5789,36 @@ def training_pmdp(config_filename="default_config.json", process_id=None):
        
         ex_data = run_pmdp_experiments(**experiment_params)
         
-        # Experiment completion information
-        print("\nExperiment executed successfully")
-        print(f"Training time data: {ex_data}")
-        print(f"Number of recorded total rewards: {len(insEval_total_rewards_list)}")
-
-        ###Rollout data preparation for saving
-        insEval_2Dlist = []
-        insEval_2Dlist.append([insEval_total_rewards_list])
-        insEval_2Dlist.append([insEval_HC_rewards_list])
-        insEval_2Dlist.append([insEval_SC_rewards_list])
+        
+        if ex_data != []:
+            print(f"Training time data: {ex_data}")
+        #print(f"Number of recorded total rewards: {len(insEval_total_rewards_list)}")
+        
+        if not pmdp_for_cssc:
+            ###Rollout data preparation for saving
+            insEval_2Dlist = []
+            insEval_2Dlist.append([insEval_total_rewards_list])
+            insEval_2Dlist.append([insEval_HC_rewards_list])
+            insEval_2Dlist.append([insEval_SC_rewards_list])
+        else:
+            # for CSSC compare, this Rollout of Average Success Rate and Average Total Reward are stored in 'insEval_total_rewards_list' and 'insEval_HC_rewards_list'
+            insEval_2Dlist = []
+            ##Average Success Rate for this mode
+            insEval_2Dlist.append([insEval_total_rewards_list])
+            ##Average Total Reward for this mode
+            #insEval_2Dlist.append([insEval_HC_rewards_list])
 
         # Call the encapsulated function to save the data
         save_experiment_rollout_data(
+            pmdp_for_cssc,
             insEval_2Dlist=insEval_2Dlist,
             Training_time_record=Training_time_record,
             Evaluate_mode=config["mode_flags"]["evaluate_mode"],
             process_id=process_id
         )
+        
+        # Experiment completion information
+        print(f"\nExperiment {process_id} executed successfully for {len(insEval_total_rewards_list)} random seeds\n\n")
 
 
     except Exception as e:
@@ -5845,23 +5902,29 @@ def training_cssc_mdp(config_filename="cssc_mdp_config.json", process_id=None):
             # Reset mappings if more than one instance
             if params["experiment_instance_number"] > 1:
                 reset_mappings()  # Assume reset_mappings is defined
+                
         
-        print("\nExperiment completed successfully")
-        print(f"Total rewards recorded: {len(insEval_total_rewards_list)}")
+        print("\nCSSC-MDP Experiment completed successfully")
+        #print(f"Total rewards recorded: {len(insEval_total_rewards_list)}")
+        
+        # Experiment completion information
+        print(f"\nExperiment {process_id} executed successfully for {len(insEval_total_rewards_list)} random seeds")
 
         ###Rollout data preparation for saving
         insEval_2Dlist = []
         insEval_2Dlist.append([insEval_total_rewards_list])
-        insEval_2Dlist.append([insEval_HC_rewards_list])
-        insEval_2Dlist.append([insEval_SC_rewards_list])
+        #insEval_2Dlist.append([insEval_HC_rewards_list])
+        #insEval_2Dlist.append([insEval_SC_rewards_list])
 
         # Call the encapsulated function to save the data
         save_experiment_rollout_data(
+            True,
             insEval_2Dlist=insEval_2Dlist,
             Training_time_record=Training_time_record,
             Evaluate_mode=config["mode_flags"]["evaluate_mode"],
             process_id=process_id
         )
+        print("\n\n")
         
     except Exception as e:
         print(f"Error executing experiment: {str(e)}", file=sys.stderr)
